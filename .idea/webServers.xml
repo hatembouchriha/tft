@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e30cd470-badb-40a4-9621-4e3b1e67248a" name="https://gitlab.com/hatembouchriha/tftweb.git">
+        <fileTransfer host="" port="21" username="hatembouchriha">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

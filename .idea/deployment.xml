@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="https://gitlab.com/hatembouchriha/tftweb.git" uploadOnCheckin="e30cd470-badb-40a4-9621-4e3b1e67248a">
+    <serverData>
+      <paths name="https://gitlab.com/hatembouchriha/tftweb.git">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myUploadOnCheckinName" value="https://gitlab.com/hatembouchriha/tftweb.git" />
+  </component>
+</project>
