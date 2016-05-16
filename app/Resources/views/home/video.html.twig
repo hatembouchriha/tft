@@ -1,0 +1,126 @@
+{% extends '::layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <!--Video Player-->
+    <link href="css/video-js.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block body %}
+    <section class="drawer">
+        <div class="col-md-12 size-img back-img-video"
+             style="background: url('{{ asset("images/cairns-tennis-centre.jpg") }}') no-repeat center center">
+            <div class="effect-cover">
+                <div class="banner_cont animated"><img src="{{ asset('images/atp_img.png') }}" alt=""/>
+                    <h3 class="txt-advert">UNCOVERED</h3></div>
+                <p class="txt-advert-sub">Now in its fifth season, ATP World Tour Uncovered.</p>
+            </div>
+        </div>
+
+        <section id="video" class="container secondary-page">
+            <div class="general general-results">
+                <div class="top-score-title col-md-9">
+                    <h3>{{ media.titre }}</h3>
+                    <div class="col-md-12 news-video">
+                        <iframe width="800"
+                                height="450" src="https://www.youtube.com/embed/{{ media.source[32:] }}"
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-desc">
+                        <h3 class="video-tit"></h3>
+                    </div>
+                    <div class="video-desc">
+                        <h3 class="video-other-old">Other <span>Video</span><span class="point-little">.</span></h3>
+                        {% for video in videos[:3] %}
+                        <div class="col-md-4 other-videotitle {% if loop.index == 3 %}otv-last{% endif %}">
+                            <p></p>
+                        </div>
+                        {% endfor %}
+                        {% for video in videos[:3] %}
+                        <div class="col-md-4 other-video {% if loop.index == 3 %}otv-last{% endif %}">
+                            <a href="{{ path('single_video', {'id': video.id}) }}">
+                                <iframe width="250"
+                                        height="160" src="https://www.youtube.com/embed/{{ video.source[32:] }}"
+                                        frameborder="0" allowfullscreen></iframe>
+                                <i class="fa fa-video-camera"></i></a>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="video-content">
+                        {% for video in videos[3:] %}
+                        <div class="col-md-4 other-videotitle {% if loop.index == 3 %}otv-last{% endif %}">
+                            <p>{{ video.titre }}</p>
+                        </div>
+                        {% endfor %}
+                        <div class="clear"></div>
+                        {% for video in videos[3:] %}
+                        <div class="col-md-4 other-video {% if loop.index == 3 %}otv-last{% endif %}">
+                            <a href="{{ path('single_video', {'id': video.id}) }}">
+                                <iframe width="250"
+                                        height="160" src="https://www.youtube.com/embed/{{ video.source[32:] }}"
+                                        frameborder="0" allowfullscreen></iframe>
+                                <i class="fa fa-video-camera"></i></a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div><!--Close Top Match-->
+                <div class="col-md-3 right-column">
+                    <div class="top-score-title col-md-12 right-title">
+                        <h3>Latest News</h3>
+                        {% for actualite in actualites %}
+                            <div class="right-content">
+                                <p class="news-title-right">{{ actualite.titre }}</p>
+                                <p class="txt-right">{{ actualite.contenu[:100] }}...</p>
+                                <a href="{{ path('single_news', {'id':actualite.id}) }}" class="ca-more"><i
+                                            class="fa fa-angle-double-right"></i>more...</a>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="top-score-title col-md-12">
+                        <img src="{{ asset('images/banner2.jpg') }}" alt=""/>
+                    </div>
+                    <div class="top-score-title col-md-12 right-title">
+                        <h3>Photos</h3>
+                        <ul class="right-last-photo">
+                            {% for media in medias %}
+                                <li>
+                                    <div class="jm-item second">
+                                        <div class="jm-item-wrapper">
+                                            <div class="jm-item-image">
+                                                <img src="{{ media.source }}" alt="" style="height: 80px; width: 80px"/>
+                                                <div class="jm-item-description">
+                                                    <div class="jm-item-button">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+
+    <!--Video Tube-->
+    <script type="text/javascript" src="js/video.js"></script>
+    <script src="js/youtube/youtube.js" type="text/javascript"></script>
+    <script src="js/youtube/videojs.youtubeVideowall.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            "use strict";
+            videojs('example_video_1', {
+                'techOrder': ['youtube'],
+                'src': 'https://www.youtube.com/watch?v=IQDjynOzgCk'
+            }, function () {
+                this.youtubeVideowall();
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+    <div class="col-md-12 size-img back-img-news">
+        <div class="effect-cover">
+            <h3 class="txt-advert animated">TFT</h3>
+            <p class="txt-advert-sub animated">ACTUALITE</p>
+        </div>
+    </div>
+
+    <section id="news" class="container secondary-page">
+        <div class="general general-results players">
+            <div class="top-score-title right-score col-md-12">
+                <h3>Actualité à la<span>Une</span><span class="point-little">.</span></h3>
+                {% for actualite in actualites %}
+                <div class="col-md-12 news-page">
+                    <img class="img-djoko" style="height: 180px;width: 250px"
+                         src="/../../resources/images/actualites/{{ actualite.image }}"
+                         onerror="this.src='{{ asset("images/unknown-logo.jpg") }}'"/>
+
+                    <div class="col-md-10 data-news-pg">
+                        <p class="news-dd">{{ actualite.datePublication }}</p>
+                        <h3>{{ actualite.titre }}</h3>
+                        <p>{{ actualite.contenu[:150] }}...</p>
+                        <div class="col-md-12 news-more"><a href="{{ path('single_news', {'id':actualite.id}) }}" class="ca-more"><i
+                                        class="fa fa-angle-double-right"></i>more...</a></div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="col-md-12 news-page-page">
+                    {{ knp_pagination_render(actualites) }}
+                </div>
+            </div><!--Close Top Match-->
+        </div>
+    </section>
+{% endblock %}

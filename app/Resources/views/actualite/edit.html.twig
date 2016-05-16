@@ -1,0 +1,63 @@
+<form action="{{ path('actualite_edit' , { 'id': actualite.id }) }}" method="post" {{ form_enctype(form) }}
+      class="form-horizontal" role="form">
+    {{ form_errors(form) }}
+    <div class="form-group">
+        <label for="titre" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.titre ,"Titre") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.titre, {'attr': {'class': 'form-control' }}) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.titre) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="date" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.datePublication ,"Date publication") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.datePublication, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.datePublication) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="image" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.image ,"image") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.image) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.image) }}
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label for="contenu" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.contenu ,"Contenu") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.contenu, {'attr': {'class': 'form-control', 'rows' : 3 }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.contenu) }}
+        </div>
+    </div>
+
+
+    <input type="submit" value="Modifier" class="btn btn-primary"/>
+    {{ form_rest(form) }}
+
+
+</form>
+

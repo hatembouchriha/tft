@@ -1,0 +1,60 @@
+<form action="{{ path('compterendutest_edit', {'id':compteRenduTest.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal"
+      role="form">
+    {{ form_errors(form) }}
+    <div class="form-group">
+        <label for="description" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.description ,"Description") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.description) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.description) }}
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label for="resultat" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.resultat ,"Résultat") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.resultat) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.resultat) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="joueur" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.idJoueur ,"Joueur") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.idJoueur) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.idJoueur) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="medecin" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.idMedecin ,"Arbitre") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.idMedecin) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.idMedecin) }}
+        </div>
+    </div>
+
+    <input type="submit" value="Modifier" class="btn btn-primary"/>
+    {{ form_rest(form) }}
+
+
+</form>

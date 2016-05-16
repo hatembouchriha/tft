@@ -1,0 +1,34 @@
+<form action="{{ path('invitation_edit', {'id':invitation.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal"
+      role="form">
+    {{ form_errors(form) }}
+    <div class="form-group">
+        <label for="date" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.dateInvitation ,"Date") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.dateInvitation) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.dateInvitation) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="medecin" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.idMedecin ,"Médecin") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.idMedecin) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.idMedecin) }}
+        </div>
+    </div>
+
+    <input type="submit" value="Modifier" class="btn btn-primary"/>
+    {{ form_rest(form) }}
+
+
+</form>

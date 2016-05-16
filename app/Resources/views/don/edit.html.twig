@@ -1,0 +1,52 @@
+
+<form action="{{ path('don_edit',{'id':don.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
+    {{ form_errors(form) }}
+    <div class="form-group">
+        <label for="titre" class="control-label col-sm-2" style="text-align: left;">
+            {{ form_label(form.dateDon ,"Date") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.dateDon, {'attr': {'class': 'form-control' }}) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.dateDon) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="date" class="control-label col-sm-2 " style="text-align: left;">
+            {{ form_label(form.description ,"Description") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.description, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.description) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="image" class="control-label col-sm-2" style="text-align: left;">
+            {{ form_label(form.idClub ,"ID Club") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.idClub, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.idClub) }}
+        </div>
+
+    </div>
+
+
+    <input type="submit" value="Modifier" class="btn btn-primary"/>
+    {{ form_rest(form) }}
+
+
+</form>
+
+
+

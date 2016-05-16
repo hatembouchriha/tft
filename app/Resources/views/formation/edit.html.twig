@@ -1,0 +1,46 @@
+<form action="{{ path('formation_edit', { 'id':formation.id }) }}" method="post" {{ form_enctype(form) }} class="form-horizontal" role="form">
+    {{ form_errors(form) }}
+    <div class="form-group">
+        <label for="dateDebut" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.dateDebut ,"Date de début") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control' }}) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.dateDebut) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="dateFin" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.dateFin ,"Date de fin") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.dateFin, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.dateFin) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="description" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.description ,"Description") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.description, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.description) }}
+        </div>
+
+    </div>
+
+    <input type="submit" value="Modifier" class="btn btn-primary"/>
+    {{ form_rest(form) }}
+
+</form>

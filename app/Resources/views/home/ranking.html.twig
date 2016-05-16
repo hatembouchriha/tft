@@ -1,0 +1,120 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+    <div class="col-md-12 size-img back-img" style="background:transparent url({{ asset("images/banner2.jpg") }})">
+        <div class="effect-cover">
+            <h3 class="txt-advert animated">The best Nikol Radek</h3>
+            <p class="txt-advert-sub">Lifelong dream of becoming the No. 1 player on the ATP World Tour </p>
+        </div>
+    </div>
+
+    <section id="summary" class="container secondary-page">
+        <div class="general general-results">
+            <div id="rrResult" class="top-score-title right-score total-reslts col-md-9">
+                <h3>Total <span>Scores</span><span class="point-little">.</span></h3>
+                <div class="cat-con-desc">
+                    <img src="{{ asset('images/cup1.jpg') }}" alt=""/>
+                    <p class="news-title-right">The best result</p>
+                    <p class="txt-right">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="txt-right">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="main">
+                    <div class="tabs animated-slide-2">
+                        <ul class="tab-links">
+                            <li class="active"><a href="#tab1111">Tunisia</a></li>
+                            <li><a href="#tab2222">All</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab1111" class="tab active">
+                                <table class="tab-score">
+                                    <tr class="top-scrore-table">
+                                        <td class="score-position">POS.</td>
+                                        <td>PLAYER</td>
+                                        <td>NAT.</td>
+                                        <td>POINTS</td>
+                                    </tr>
+                                    {% for joueur in joueursTun %}
+                                        <tr>
+                                            <td class="score-position">{{ loop.index }}.</td>
+                                            <td><a href="{{ path('single_player', {'id':joueur.id}) }}">
+                                                    {{ joueur.nom ~ " " ~ joueur.prenom }} </a>
+                                            </td>
+                                            <td><img src="/../../resources/images/joueurs/{{ joueur.image }}"
+                                                     onerror="this.src='{{ asset("images/player/face.jpg") }}'"/></td>
+                                            <td>{{ joueur.score }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                            <div id="tab2222" class="tab">
+                                <table class="tab-score">
+                                    <tr class="top-scrore-table">
+                                        <td class="score-position">POS.</td>
+                                        <td>PLAYER</td>
+                                        <td>NAT.</td>
+                                        <td>POINTS</td>
+                                    </tr>
+                                    <tr>
+                                        {% for joueur in joueurs %}
+                                    <tr>
+                                        <td class="score-position">{{ loop.index }}.</td>
+                                        <td><a href="{{ path('single_player', {'id':joueur.id}) }}">
+                                                {{ joueur.nom ~ " " ~ joueur.prenom }} </a>
+                                        </td>
+                                        <td><img src="/../../resources/images/joueurs/{{ joueur.image }}"
+                                                 onerror="this.src='{{ asset("images/player/face.jpg") }}'"/></td>
+                                        <td>{{ joueur.score }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="score-view-all"></div>
+                    </div>
+                </div>
+            </div><!--Close Top Match-->
+            <div class="col-md-3 right-column">
+                <div class="top-score-title col-md-12 right-title">
+                    <h3>Latest News</h3>
+                    {% for actualite in actualites %}
+                        <div class="right-content">
+                            <p class="news-title-right">{{ actualite.titre }}</p>
+                            <p class="txt-right">{{ actualite.contenu[:100] }}...</p>
+                            <a href="{{ path('single_news', {'id':actualite.id}) }}" class="ca-more"><i
+                                        class="fa fa-angle-double-right"></i>more...</a>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="top-score-title col-md-12">
+                    <img src="{{ asset('images/banner2.jpg') }}" alt=""/>
+                </div>
+                <div class="top-score-title col-md-12 right-title">
+                    <h3>Photos</h3>
+                    <ul class="right-last-photo">
+                        {% for media in medias %}
+                            <li>
+                                <div class="jm-item second">
+                                    <div class="jm-item-wrapper">
+                                        <div class="jm-item-image">
+                                            <img src="{{ media.source }}" alt="" style="height: 80px; width: 80px"/>
+                                            <div class="jm-item-description">
+                                                <div class="jm-item-button">
+                                                    <i class="fa fa-plus"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

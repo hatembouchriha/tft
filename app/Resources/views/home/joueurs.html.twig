@@ -1,0 +1,128 @@
+{% extends '::layout.html.twig' %}
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300'
+          rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,300,200,500,600,700,800,900' rel='stylesheet'
+          type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="{{ asset('css/fonts/font-awesome-4.1.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/jquery.bxslider.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/jquery.jscrollpane.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/component.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/style_dir.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.ico') }}"/>
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block body %}
+
+    <div class="col-md-12 size-img back-img-match">
+        <div class="effect-cover">
+            <h3 class="txt-advert animated">The best Palyer</h3>
+            <p class="txt-advert-sub">Lifelong dream of becoming the No. 1 player on the ATP World Tour </p>
+        </div>
+    </div>
+
+    <section id="players" class="container secondary-page">
+        <div class="general general-results players">
+
+            <div class="top-score-title right-score col-md-9">
+                <h3>Tunisian <span>Players</span><span class="point-little">.</span></h3>
+                <p class="txt-right">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p class="txt-right txt-dd-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                {% for joueur in joueursTun %}
+                    <div class="col-md-3 atp-player">
+                        <a href="{{ path('single_player', {'id':joueur.id}) }}">
+                            <img src="/../../resources/images/joueurs/{{ joueur.image }}"
+                                 onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                 class="thumbnail" style="height: 200px; width: 140px"/>
+                            <p>{{ joueur.nom ~ " " ~ joueur.prenom }}</p></a>
+                    </div>
+                {% endfor %}
+                <div class="content-wtp-player">
+                    <h3>All <span>Players</span><span class="point-little">.</span></h3>
+                    <p class="txt-right">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="txt-right txt-dd-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    {% for joueur in joueurs %}
+                        <div class="col-md-3 atp-player">
+                            <a href="{{ path('single_player', {'id':joueur.id}) }}">
+                                <img src="/../../resources/images/joueurs/{{ joueur.image }}"
+                                     onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                     class="thumbnail" style="height: 200px; width: 140px"/>
+                                <p>{{ joueur.nom ~ " " ~ joueur.prenom }}</p></a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div><!--Close Top Match-->
+            <div class="col-md-3 right-column">
+                <div class="top-score-title col-md-12 right-title">
+                    <h3>Latest News</h3>
+                    {% for actualite in actualites %}
+                        <div class="right-content">
+                            <p class="news-title-right">{{ actualite.titre }}</p>
+                            <p class="txt-right">{{ actualite.contenu[:100] }}...</p>
+                            <a href="{{ path('single_news', {'id':actualite.id}) }}" class="ca-more"><i
+                                        class="fa fa-angle-double-right"></i>more...</a>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="top-score-title col-md-12">
+                    <img src="{{ asset('images/banner2.jpg') }}" alt=""/>
+                </div>
+                <div class="top-score-title col-md-12 right-title">
+                    <h3>Photos</h3>
+                    <ul class="right-last-photo">
+                        {% for media in medias %}
+                            <li>
+                                <div class="jm-item second">
+                                    <div class="jm-item-wrapper">
+                                        <div class="jm-item-image">
+                                            <img src="{{ media.source }}" alt="" style="height: 80px; width: 80px"/>
+                                            <div class="jm-item-description">
+                                                <div class="jm-item-button">
+                                                    <i class="fa fa-plus"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ asset('js/jquery-1.10.2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}" type="text/javascript"></script>
+    <!--MENU-->
+    <script src="{{ asset('js/menu/modernizr.custom.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/menu/cbpHorizontalMenu.js') }}" type="text/javascript"></script>
+    <!--END MENU-->
+
+    <!-- Button Anchor Top-->
+    <script src="{{ asset('js/jquery.ui.totop.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('js/jquery.accordion.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(function () {
+                "use strict";
+                $('.accordion').accordion({defaultOpen: 'section1'}); //some_id section1 in demo
+            });
+        });
+    </script>
+    <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
+{% endblock %}

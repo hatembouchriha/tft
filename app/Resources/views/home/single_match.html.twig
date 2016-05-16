@@ -1,0 +1,256 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+    <section class="drawer">
+        <div class="col-md-12 size-img back-img-single">
+            <div class="effect-cover">
+                <h3 class="txt-advert animated">The best ROGER FEDERER</h3>
+                <p class="txt-advert-sub">Player on the ATP World Tour </p>
+            </div>
+        </div>
+
+        <section id="single-match-pl" class="container secondary-page">
+            <div class="general general-results players">
+                <div class="top-score-title right-score col-md-9">
+                    <div class="top-score-title player-vs">
+                        <h3>{{ match.idStade.nom }} - <span>{{ match.description }} Final</span><span
+                                    class="point-little">.</span></h3>
+                        <div class="main">
+                            <div class="tabs standard">
+                                <div class="tab-content">
+                                    <div class="effect-color">
+                                        <div class="tab active">
+                                            <div class="col-md-12 player-score-bg"></div>
+                                            <div class="col-md-12 player-photo">
+                                                <img class="img-face img-mm1"
+                                                     src="/../../resources/images/joueurs/{{ match.idJoueurUn.image }}"
+                                                     onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                                     style="height: 120px;width: 120px"/>
+                                                <img class="img-face img-mm2"
+                                                     src="/../../resources/images/joueurs/{{ match.idJoueurDeux.image }}"
+                                                     onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                                     style="height: 120px;width: 120px"/>
+                                            </div>
+                                            <div class="col-md-12 play-vs">
+                                                <div class="result-name">
+                                                    <img src="/../../resources/images/joueurs/{{ match.idJoueurUn.logoPays }}"
+                                                         onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                                         style="height: 30px;width: 40px"/>
+                                                    <span>{{ match.idJoueurUn.nom ~ " " ~ match.idJoueurUn.prenom }}</span>
+                                                    <span class="txt-vs">vs</span>
+                                                    <img src="/../../resources/images/joueurs/{{ match.idJoueurDeux.logoPays }}"
+                                                         onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                                         style="height: 30px;width: 40px"/>
+                                                    <span>{{ match.idJoueurDeux.nom ~ " " ~ match.idJoueurDeux.prenom }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="col-md-12 play-vs">
+                                                <table id="result-table">
+                                                    {% set set1 = match.setUn|split('-') %}
+                                                    {% set set2 = match.setDeux|split('-') %}
+                                                    {% set set3 = match.setTrois|split('-') %}
+                                                    {% set set4 = match.setQuatre|split('-') %}
+                                                    {% set set5 = match.setCinq|split('-') %}
+                                                    <tr>
+                                                        <td class="fpt">{{ match.idJoueurUn.nom ~ " " ~ match.idJoueurUn.prenom }}</td>
+                                                        <td class="fpt">{{ set1[0]|default('-') }}</td>
+                                                        <td class="fpt">{{ set2[0]|default('-') }}</td>
+                                                        <td class="fpt">{{ set3[0]|default('-') }}</td>
+                                                        <td class="fpt">{{ set4[0]|default('-') }}</td>
+                                                        <td>{{ set5[0]|default('-') }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fpt fpt2">{{ match.idJoueurDeux.nom ~ " " ~ match.idJoueurDeux.prenom }}</td>
+                                                        <td class="fpt fpt2">{{ set1[1]|default('-') }}</td>
+                                                        <td class="fpt fpt2">{{ set2[1]|default('-') }}</td>
+                                                        <td class="fpt fpt2">{{ set3[1]|default('-') }}</td>
+                                                        <td class="fpt fpt2">{{ set4[1]|default('-') }}</td>
+                                                        <td class="fpt2">{{ set5[1]|default('-') }}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="tabs standard single-pl">
+                                <div class="tab-content single-match">
+                                    <div id="tab1" class="tab active">
+                                        <h3 class="tab-match-title">MATCH STATISTICS</h3>
+                                        <div class="tabs standard">
+                                            <div class="tab-content">
+                                                <div id="tab1a" class="tab active">
+                                                    <div class="col-md-4 single-match-data">
+                                                        <p class="nm-player">{{ match.idJoueurUn.nom ~ " " ~ match.idJoueurUn.prenom }}
+                                                        </p>
+                                                        <p>{{ match.statistics[0].aces|default('-') }}</p>
+                                                        <p>{{ match.statistics[0].serviceWinners|default('-') }}</p>
+                                                        <p>{{ match.statistics[0].doubleFaults|default('-') }}</p>
+                                                        <p>{{ match.statistics[0].totalPoints|default('-') }}</p>
+                                                        <p>{{ match.statistics[0].totalPointsWon|default('-') }}</p>
+                                                        <p>{{ match.statistics[0].serviceGame|default('-') }}</p>
+                                                        <p>{{ match.statistics[0].averageServeSpeed|default('-') }}</p>
+                                                        <p>{{ match.statistics[0].fastestServeSpeed|default('-') }}</p>
+                                                    </div>
+                                                    <div class="col-md-4 single-match-data">
+                                                        <p class="nm-player">Stats</p>
+                                                        <p>Aces</p>
+                                                        <p>Service winners</p>
+                                                        <p>Double faults</p>
+                                                        <p>Total points</p>
+                                                        <p>Total points won</p>
+                                                        <p>Service games</p>
+                                                        <p>Average serve speed</p>
+                                                        <p>Fastest serve speed</p>
+                                                    </div>
+                                                    <div class="col-md-4 single-match-data">
+                                                        <p class="nm-player">Lori Sadek</p>
+                                                        <p>{{ match.statistics[1].aces|default('-') }}</p>
+                                                        <p>{{ match.statistics[1].serviceWinners|default('-') }}</p>
+                                                        <p>{{ match.statistics[1].doubleFaults|default('-') }}</p>
+                                                        <p>{{ match.statistics[1].totalPoints|default('-') }}</p>
+                                                        <p>{{ match.statistics[1].totalPointsWon|default('-') }}</p>
+                                                        <p>{{ match.statistics[1].serviceGame|default('-') }}</p>
+                                                        <p>{{ match.statistics[1].averageServeSpeed|default('-') }}</p>
+                                                        <p>{{ match.statistics[1].fastestServeSpeed|default('-') }}</p>
+                                                    </div>
+                                                </div>
+                                                <div id="tab2a" class="tab">
+                                                    <div class="col-md-4 single-match-data">
+                                                        <p class="nm-player">Mery Clen</p>
+                                                        <div class="col-md-4 subcol-pl">
+                                                            <p>TOTAL</p>
+
+                                                        </div>
+                                                        <div class="col-md-4 subcol-pl">
+                                                            <p>1ST SERVE</p>
+                                                            <p>7</p>
+                                                            <p>1</p>
+                                                            <p>3</p>
+                                                            <p>49</p>
+                                                            <p>32</p>
+                                                            <p>9</p>
+                                                            <p>97</p>
+                                                            <p>120</p>
+                                                        </div>
+                                                        <div class="col-md-4 subcol-pl">
+                                                            <p>2ND SERVE</p>
+                                                            <p>7</p>
+                                                            <p>1</p>
+                                                            <p>3</p>
+                                                            <p>49</p>
+                                                            <p>32</p>
+                                                            <p>9</p>
+                                                            <p>97</p>
+                                                            <p>120</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 single-match-data">
+                                                        <p class="nm-player">Stats</p>
+                                                        <p>-</p>
+                                                        <p>Aces</p>
+                                                        <p>Service winners</p>
+                                                        <p>Double faults</p>
+                                                        <p>Total points</p>
+                                                        <p>Total points won</p>
+                                                        <p>Service games</p>
+                                                        <p>Average serve speed</p>
+                                                        <p>Fastest serve speed</p>
+                                                    </div>
+                                                    <div class="col-md-4 single-match-data">
+                                                        <p class="nm-player">Alex Serghi</p>
+                                                        <div class="col-md-4 subcol-pl">
+
+                                                            <p>2ND SERVE</p>
+                                                            <p>7</p>
+                                                            <p>1</p>
+                                                            <p>3</p>
+                                                            <p>49</p>
+                                                            <p>32</p>
+                                                            <p>9</p>
+                                                            <p>97</p>
+                                                            <p>120</p>
+                                                        </div>
+                                                        <div class="col-md-4 subcol-pl">
+                                                            <p>1ST SERVE</p>
+                                                            <p>7</p>
+                                                            <p>1</p>
+                                                            <p>3</p>
+                                                            <p>49</p>
+                                                            <p>32</p>
+                                                            <p>9</p>
+                                                            <p>97</p>
+                                                            <p>120</p>
+                                                        </div>
+                                                        <div class="col-md-4 subcol-pl">
+                                                            <p>TOTAL</p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--Close Top Match-->
+                <div class="col-md-3 right-column">
+                    <div class="top-score-title col-md-12 right-title">
+                        <h3>Latest News</h3>
+                        {% for actualite in actualites %}
+                            <div class="right-content">
+                                <p class="news-title-right">{{ actualite.titre }}</p>
+                                <p class="txt-right">{{ actualite.contenu[:100] }}...</p>
+                                <a href="{{ path('single_news', {'id':actualite.id}) }}" class="ca-more"><i
+                                            class="fa fa-angle-double-right"></i>more...</a>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="top-score-title col-md-12">
+                        <img src="{{ asset('images/banner2.jpg') }}" alt=""/>
+                    </div>
+                    <div class="top-score-title col-md-12 right-title">
+                        <h3>Photos</h3>
+                        <ul class="right-last-photo">
+                            {% for media in medias %}
+                                <li>
+                                    <div class="jm-item second">
+                                        <div class="jm-item-wrapper">
+                                            <div class="jm-item-image">
+                                                <img src="{{ media.source }}" alt="" style="height: 80px; width: 80px"/>
+                                                <div class="jm-item-description">
+                                                    <div class="jm-item-button">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <!--MENU-->
+    <script src="js/menu/modernizr.custom.js" type="text/javascript"></script>
+    <script src="js/menu/cbpHorizontalMenu.js" type="text/javascript"></script>
+    <!--END MENU-->
+
+    <!-- Button Anchor Top-->
+    <script src="js/jquery.ui.totop.js" type="text/javascript"></script>
+
+    <script src="js/custom.js" type="text/javascript"></script>
+{% endblock %}

@@ -1,0 +1,139 @@
+<form action="{{ path('statistic_new', {'id' : statistic.id}) }}" method="post" {{ form_enctype(form) }}
+      class="form-horizontal" role="form">
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        <label for="aces" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.aces ,"Aces") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.aces) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.aces) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="serviceWinners" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.serviceWinners ,"Service Winners") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.serviceWinners) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.serviceWinners) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="doubleFaults" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.doubleFaults ,"Double Faults") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.doubleFaults) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.doubleFaults) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="totalPoints" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.totalPoints ,"Total Points") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.totalPoints) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.totalPoints) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="totalPointsWon" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.totalPointsWon ,"Total Points Won") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.totalPointsWon) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.totalPointsWon) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="serviceGame" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.serviceGame ,"Service Game") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.serviceGame) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.serviceGame) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="averageServeSpeed" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.averageServeSpeed ,"Average Serve Speed") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.averageServeSpeed) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.averageServeSpeed) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="fastestServeSpeed" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.fastestServeSpeed ,"Fastest Serve Speed") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.fastestServeSpeed) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.fastestServeSpeed) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="idMatch" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.idMatch ,"Match") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.idMatch) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.idMatch) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="idJoueur" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.idJoueur ,"Joueur") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.idJoueur) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.idJoueur) }}
+        </div>
+
+    </div>
+
+    <input type="submit" value="Modifier" class="btn btn-primary"/>
+    {{ form_rest(form) }}
+
+
+</form>

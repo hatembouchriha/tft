@@ -1,0 +1,156 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+    <section class="drawer">
+        <div class="col-md-12 size-img back-img-match">
+            <div class="effect-cover">
+                <h3 class="txt-advert animated">The best Palyer</h3>
+                <p class="txt-advert-sub">Lifelong dream of becoming the No. 1 player on the ATP World Tour </p>
+            </div>
+        </div>
+
+        <section id="single_player" class="container secondary-page">
+            <div class="general general-results players">
+                <div class="top-score-title right-score col-md-9">
+                    <h3>{{ joueur.nom }} <span>{{ joueur.prenom }}</span><span class="point-little">.</span></h3>
+                    <div class="col-md-12 atp-single-player">
+                        <img class="img-djoko" src="/../../resources/images/joueurs/{{ joueur.image }}"
+                             style="height: 250px"
+                             onerror="this.src='{{ asset("images/player/face.jpg") }}'"/>
+                        <div class="col-md-2 data-player">
+                            <p>Birthdate:</p>
+                            <p>Birthplace:</p>
+                            <p>Height:</p>
+                            <p>Weight:</p>
+                            <p>Plays:</p>
+                            <p>Turned Pro:</p>
+                            <p>Nicknames:</p>
+                        </div>
+                        <div class="col-md-3 data-player-2">
+                            <p>{{ date(joueur.dateNaissance)|localizeddate('long', 'none') }}</p>
+                            <p>Belgrade, Serbia</p>
+                            <p>{{ joueur.taille }}cm</p>
+                            <p>{{ joueur.poids }}kg</p>
+                            <p>Right-handed</p>
+                            <p>12 years on tour</p>
+                            <p>Nole</p>
+                        </div>
+                        <div class="col-md-2 rank-player">
+                            <div class="content-rank"><p class="rank-data">1</p></div>
+                            <p class="rank-title">Current Ranked</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 atp-single-player skill-content">
+                        <div class="exp-skill">
+                            <p class="exp-title-pp">SKILLS</p>
+                            <div class="skills-pp">
+                                <div class="skillbar-pp clearfix" data-percent="95%">
+                                    <div class="skillbar-title-pp"><span>Grip   </span></div>
+                                    <div class="skillbar-bar-pp"></div>
+                                    <div class="skill-bar-percent-pp">95%</div>
+                                </div>
+                                <div class="skillbar-pp clearfix" data-percent="84%">
+                                    <div class="skillbar-title-pp"><span>Serve  </span></div>
+                                    <div class="skillbar-bar-pp"></div>
+                                    <div class="skill-bar-percent-pp">84%</div>
+                                </div>
+                                <div class="skillbar-pp clearfix" data-percent="65%">
+                                    <div class="skillbar-title-pp"><span>Forehand</span></div>
+                                    <div class="skillbar-bar-pp"></div>
+                                    <div class="skill-bar-percent-pp">65%</div>
+                                </div>
+                                <div class="skillbar-pp clearfix" data-percent="75%">
+                                    <div class="skillbar-title-pp"><span>Backhand</span></div>
+                                    <div class="skillbar-bar-pp"></div>
+                                    <div class="skill-bar-percent-pp">75%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 atp-single-player skill-content">
+                        <div class="ppl-desc">
+                            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+                            <script src="//code.highcharts.com/4.1.8/highcharts.js"></script>
+                            <script src="//code.highcharts.com/4.1.8/modules/exporting.js"></script>
+                            <script type="text/javascript">
+                                {{ chart(chart) }}
+                            </script>
+                            <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                        </div>
+                    </div>
+
+                </div><!--Close Top Match-->
+
+                <!--Right Column-->
+                <div class="col-md-3 right-column">
+                    <div class="top-score-title col-md-12 right-title">
+                        <h3>Latest News</h3>
+                        {% for actualite in actualites %}
+                            <div class="right-content">
+                                <p class="news-title-right">{{ actualite.titre }}</p>
+                                <p class="txt-right">{{ actualite.contenu[:100] }}...</p>
+                                <a href="{{ path('single_news', {'id':actualite.id}) }}" class="ca-more"><i
+                                            class="fa fa-angle-double-right"></i>more...</a>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="top-score-title col-md-12">
+                        <img src="{{ asset('images/banner2.jpg') }}" alt=""/>
+                    </div>
+                    <div class="top-score-title col-md-12 right-title">
+                        <h3>Photos</h3>
+                        <ul class="right-last-photo">
+                            {% for media in medias %}
+                                <li>
+                                    <div class="jm-item second">
+                                        <div class="jm-item-wrapper">
+                                            <div class="jm-item-image">
+                                                <img src="{{ media.source }}" alt="" style="height: 80px; width: 80px"/>
+                                                <div class="jm-item-description">
+                                                    <div class="jm-item-button">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <!--MENU-->
+    <script src="js/menu/modernizr.custom.js" type="text/javascript"></script>
+    <script src="js/menu/cbpHorizontalMenu.js" type="text/javascript"></script>
+    <!--END MENU-->
+
+    <!-- Button Anchor Top-->
+    <script src="js/jquery.ui.totop.js" type="text/javascript"></script>
+
+    <!--PERCENTAGE-->
+    <script>
+        $(function () {
+            "use strict";
+            $('.skillbar-pp').each(function () {
+                $(this).find('.skillbar-bar-pp').width(0);
+            });
+
+            $('.skillbar-pp').each(function () {
+                $(this).find('.skillbar-bar-pp').animate({
+                    width: $(this).attr('data-percent')
+                }, 2000);
+            });
+        });
+    </script>
+
+
+    <script src="js/custom.js" type="text/javascript"></script>
+{% endblock %}

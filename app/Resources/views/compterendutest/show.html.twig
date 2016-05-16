@@ -1,0 +1,22 @@
+<h1>CompteRenduTest</h1>
+
+<table>
+    <tbody>
+    <tr>
+        <th>Description</th>
+        <td>{{ compteRenduTest.description }}</td>
+    </tr>
+    <tr>
+        <th>Resultat</th>
+        <td>{% if compteRenduTest.resultat %}Yes{% else %}No{% endif %}</td>
+    </tr>
+    <tr>
+        <th>Idjoueur</th>
+        <td>{{ compteRenduTest.idJoueur }}</td>
+    </tr>
+    <tr>
+        <th>Id</th>
+        <td>{{ compteRenduTest.id }}</td>
+    </tr>
+    </tbody>
+</table>

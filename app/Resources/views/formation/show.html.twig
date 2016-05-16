@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Formation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Datedebut</th>
+                <td>{{ formation.dateDebut }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ formation.dateFin }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ formation.description }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ formation.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('formation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('formation_edit', { 'id': formation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

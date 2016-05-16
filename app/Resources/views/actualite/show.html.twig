@@ -1,0 +1,46 @@
+{% extends '::adminlayout.html.twig' %}
+
+{% block body %}
+<div style="padding: 20px;">
+
+       <div class="container">
+           <div class="row">
+               <div class="col-sm-5">
+                   <div class="panel panel-primary" >
+                       <div class="panel-heading">
+                           <h1 class="panel-title">Actualité</h1>
+                       </div>
+                       <div class="panel-body" style="padding: 40px 10px 40px 10px ;">
+                           <div class="dl-horizontal">
+                               <dt>ID</dt>
+                               <dd>{{ actualite.id }}</dd>
+                               <dt>Titre</dt>
+                               <dd>{{ actualite.titre }}</dd>
+                               <dt>Contenu</dt>
+                               <dd>{{ actualite.contenu }}</dd>
+                               <dt>Date de publication</dt>
+                               <dd>{{actualite.datePublication| date('d/m/Y') }}</dd>
+                               <dt>Image</dt>
+                               <dd>{{actualite.image }}</dd>
+                           </div>
+                       </div>
+                       <div class="panel-footer">
+                           {{ form_start(delete_form) }}
+                           <button type="submit" class="btn btn-danger">Supprimer</button>
+                               <a href="{{ path('actualite_edit', { 'id': actualite.id }) }} " class="btn btn-warning">Modifier</a>
+                           {{ form_end(delete_form) }}
+
+                       </div>
+                   </div>
+
+                <a href="{{ path('actualite_index') }}" class="btn btn-link">Retourner </a>
+
+               </div>
+           </div>
+       </div>
+
+
+</div>
+{% endblock %}
+
+

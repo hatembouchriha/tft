@@ -1,0 +1,56 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_USER:          ROLE_USER
+        ROLE_ARBITRE:       ROLE_ARBITRE
+        ROLE_JOUEUR:        ROLE_JOUEUR
+        ROLE_MEDECIN:       ROLE_MEDECIN
+        ROLE_RESPONSABLE:   ROLE_RESPONSABLE
+        ROLE_ADMIN:         ROLE_ADMIN
+
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                login_path: /login
+                always_use_default_target_path: true
+                default_target_path: /home/index
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+
+            logout:
+                path:   /logout
+                target: /login
+            anonymous:    true
+        secured_area:
+            anonymous: ~
+            pattern:    ^/
+            oauth:
+                resource_owners:
+                    facebook:  /login_facebook
+                login_path:    /login
+                failure_path:  /login
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.entity
+
+
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/arbitre/, role: ROLE_ARBITRE }
+        - { path: ^/medecin/, role: ROLE_MEDECIN }
+        - { path: ^/responsable/, role: ROLE_RESPONSABLE }
+        - { path: ^/joueur/, role: ROLE_JOUEUR }

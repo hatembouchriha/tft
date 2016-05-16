@@ -1,0 +1,42 @@
+{% extends '::adminlayout.html.twig' %}
+
+{% block body %}
+<div class="container" style="padding: 20px;">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="panel panel-primary" >
+                <div class="panel-heading">
+                    <h1 class="panel-title">Arbitre</h1>
+                </div>
+                <div class="panel-body" style="padding: 40px 10px 40px 10px ;">
+                    <div class="dl-horizontal">
+                        <dt>ID</dt>
+                        <dd>{{ arbitre.id }}</dd>
+                        <dt>Nom</dt>
+                        <dd>{{ arbitre.nom}}</dd>
+                        <dt>Prénom</dt>
+                        <dd>{{ arbitre.prenom }}</dd>
+                        <dt>Date de naissance</dt>
+                        <dd>{{arbitre.dateNaissance| date('d/m/Y') }}</dd>
+                        <dt>Catégorie</dt>
+                        <dd>{{arbitre.categorie }}</dd>
+                        <dt>Login</dt>
+                        <dd>{{arbitre.login }}</dd>
+                        <dt>Mot de passe</dt>
+                        <dd>{{arbitre.password }}</dd>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    {{ form_start(delete_form) }}
+                    <button type="submit"  class="btn btn-danger">Supprimer </button>
+                    <a href="{{ path('arbitre_edit', { 'id': arbitre.id }) }}" class="btn btn-warning">Modifier</a>
+                    {{ form_end(delete_form) }}
+
+                </div>
+            </div>
+            <a href="{{ path('arbitre_index') }}" class="btn btn-l">Retourner</a>
+
+        </div>
+    </div>
+ </div>
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends '::adminlayout.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables/jquery.dataTables.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% set IDs={} %}
+    <section class="content-header">
+        <h1>Dons</h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><a data-toggle="modal" href="#addModal" data-target="#addModal"
+                                                 class="btn btn-success">
+                                <i class="fa fa-plus">Ajouter</i></a></h3>
+                        <div id="addModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Nouvelle Don</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{ render(path("don_new")) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="tableDon" datatable="" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th style="width: 70px">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for don in dons %}
+                                {% set IDs=IDs|merge([''~don.id]) %}
+                                <tr>
+                                    <td><a href="{{ path('don_show', { 'id': don.id }) }}">{{ don.id }}</a></td>
+                                    <td>{{ don.dateDon }}</td>
+                                    <td>{{ don.description }}</td>
+                                    <td>
+                                        <a data-toggle="modal" href="#editModal{{ don.id }}"
+                                           data-target="#editModal{{ don.id }}"
+                                           class="btn btn-warning"><i class="fa fa-edit"></i></a>
+
+                                        <a href="{{ path('don_delete', { 'id': don.id }) }}"
+                                           class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% for id in IDs %}
+        <div id="editModal{{id}}" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modifier Don</h4>
+                    </div>
+                    <div class="modal-body">
+                       {{ render(path('don_edit',{'id':id})) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+    <!-- jQuery 2.1.4 -->
+    <script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- DataTables -->
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <!-- SlimScroll -->
+    <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+    <!-- FastClick -->
+    <script src="{{ asset('plugins/fastclick/fastclick.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('dist/js/app.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('dist/js/demo.js') }}"></script>
+    <!-- page script -->
+    <script>
+        $(document).ready(function () {
+            var table = $('#tableDon').DataTable();
+
+            $('#tableDon tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+        });
+    </script>
+{% endblock %}

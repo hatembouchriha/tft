@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Statistic</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Setun</th>
+                <td>{{ statistic.setUn }}</td>
+            </tr>
+            <tr>
+                <th>Setdeux</th>
+                <td>{{ statistic.setDeux }}</td>
+            </tr>
+            <tr>
+                <th>Settrois</th>
+                <td>{{ statistic.setTrois }}</td>
+            </tr>
+            <tr>
+                <th>Setquatre</th>
+                <td>{{ statistic.setQuatre }}</td>
+            </tr>
+            <tr>
+                <th>Setcinq</th>
+                <td>{{ statistic.setCinq }}</td>
+            </tr>
+            <tr>
+                <th>Aces</th>
+                <td>{{ statistic.aces }}</td>
+            </tr>
+            <tr>
+                <th>Servicewinners</th>
+                <td>{{ statistic.serviceWinners }}</td>
+            </tr>
+            <tr>
+                <th>Doublefaults</th>
+                <td>{{ statistic.doubleFaults }}</td>
+            </tr>
+            <tr>
+                <th>Totalpoints</th>
+                <td>{{ statistic.totalPoints }}</td>
+            </tr>
+            <tr>
+                <th>Totalpointswon</th>
+                <td>{{ statistic.totalPointsWon }}</td>
+            </tr>
+            <tr>
+                <th>Servicegame</th>
+                <td>{{ statistic.serviceGame }}</td>
+            </tr>
+            <tr>
+                <th>Averageservespeed</th>
+                <td>{{ statistic.averageServeSpeed }}</td>
+            </tr>
+            <tr>
+                <th>Fastestservespeed</th>
+                <td>{{ statistic.fastestServeSpeed }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ statistic.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('statistic_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('statistic_edit', { 'id': statistic.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

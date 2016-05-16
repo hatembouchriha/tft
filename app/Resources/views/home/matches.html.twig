@@ -1,0 +1,199 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+    <section class="drawer">
+        <div class="col-md-12 size-img back-img-match">
+            <div class="effect-cover">
+                <h3 class="txt-advert animated">TFT MACHES</h3>
+
+            </div>
+        </div>
+
+        <section id="allmatch" class="container secondary-page">
+            <div class="general general-results">
+                <div class="top-score-title right-score col-md-9">
+                    <h3>MATCHES<span class="point-little">.</span></h3>
+                    <div class="main">
+                        <div class="tabs animated-slide-2 matches-tbs">
+                            <ul class="tab-links-matches">
+                                <li class="active"><a href="#tab1111">All matches</a></li>
+                                <li><a href="#tab2222">Completed matches</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="tab1111" class="tab active">
+                                    {% for match in matchs %}
+                                        <table class="match-tbs">
+                                            <tr>
+                                                <td class="match-tbs-title" colspan="7">{{ match.idStade.nom }} Stadium
+                                                    - {{ match.type }}'s {{ match.genre }}
+                                                    -
+                                                    {{ match.description }}
+                                                </td>
+                                            </tr>
+                                            <tr class="match-sets">
+                                                <td></td>
+                                                <td class="fpt">Pts</td>
+                                                <td class="fpt">1</td>
+                                                <td class="fpt">2</td>
+                                                <td class="fpt">3</td>
+                                                <td class="fpt">4</td>
+                                                <td>5</td>
+                                            </tr>
+                                            {% set score = match.score|split('-') %}
+                                            {% set set1 = match.setUn|split('-') %}
+                                            {% set set2 = match.setDeux|split('-') %}
+                                            {% set set3 = match.setTrois|split('-') %}
+                                            {% set set4 = match.setQuatre|split('-') %}
+                                            {% set set5 = match.setCinq|split('-') %}
+                                            <tr>
+                                                <td class="fpt">{{ match.idJoueurUn.nom ~ " " ~ match.idJoueurUn.prenom }}
+                                                    ({{ match.idJoueurUn.nationalite }})
+                                                    {% if match.score != '*-*' %}
+                                                        {% if score[0] > score[1] %}
+                                                            <i class="fa fa-check"></i>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </td>
+                                                <td class="fpt">{{ score[0] }}</td>
+                                                <td class="fpt">{{ set1[0]|default('-') }}</td>
+                                                <td class="fpt">{{ set2[0]|default('-') }}</td>
+                                                <td class="fpt">{{ set3[0]|default('-') }}</td>
+                                                <td class="fpt">{{ set4[0]|default('-') }}</td>
+                                                <td>{{ set5[0]|default('-') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fpt fpt2">{{ match.idJoueurDeux.nom ~ " " ~ match.idJoueurDeux.prenom }}
+                                                    ({{ match.idJoueurDeux.nationalite }})
+                                                    {% if match.score != '*-*' %}
+                                                        {% if score[1] > score[0] %}
+                                                            <i class="fa fa-check"></i>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </td>
+                                                <td class="fpt fpt2">{{ score[1]|default('-') }}</td>
+                                                <td class="fpt fpt2">{{ set1[1]|default('-') }}</td>
+                                                <td class="fpt fpt2">{{ set2[1]|default('-') }}</td>
+                                                <td class="fpt fpt2">{{ set3[1]|default('-') }}</td>
+                                                <td class="fpt fpt2">{{ set4[1]|default('-') }}</td>
+                                                <td class="fpt2">{{ set5[1]|default('-') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="match-more" colspan="7">
+                                                    <a href="{{ path('single_match', {'id':match.id}) }}" class="ca-more"><i
+                                                                class="fa fa-angle-double-right"></i>more</a></td>
+                                            </tr>
+                                        </table>
+                                    {% endfor %}
+                                </div>
+                                <div id="tab2222" class="tab">
+                                    {% for match in completedMatchs %}
+                                        <table class="match-tbs">
+                                            <tr>
+                                                <td class="match-tbs-title" colspan="7">{{ match.idStade.nom }} Stadium
+                                                    - {{ match.type }}'s {{ match.genre }}
+                                                    - {{ match.description }} Final
+                                                </td>
+                                            </tr>
+                                            <tr class="match-sets">
+                                                <td></td>
+                                                <td class="fpt">Pts</td>
+                                                <td class="fpt">1</td>
+                                                <td class="fpt">2</td>
+                                                <td class="fpt">3</td>
+                                                <td class="fpt">4</td>
+                                                <td>5</td>
+                                            </tr>
+                                            {% set score = match.score|split('-') %}
+                                            {% set set1 = match.setUn|split('-') %}
+                                            {% set set2 = match.setDeux|split('-') %}
+                                            {% set set3 = match.setTrois|split('-') %}
+                                            {% set set4 = match.setQuatre|split('-') %}
+                                            {% set set5 = match.setCinq|split('-') %}
+                                            <tr>
+                                                <td class="fpt">{{ match.idJoueurUn.nom ~ " " ~ match.idJoueurUn.prenom }}
+                                                    ({{ match.idJoueurUn.nationalite }})
+                                                    <i class="fa fa-check"></i></td>
+                                                <td class="fpt">{{ score[0] }}</td>
+                                                <td class="fpt">{{ set1[0]|default('-') }}</td>
+                                                <td class="fpt">{{ set2[0]|default('-') }}</td>
+                                                <td class="fpt">{{ set3[0]|default('-') }}</td>
+                                                <td class="fpt">{{ set4[0]|default('-') }}</td>
+                                                <td>{{ set5[0]|default('-') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fpt fpt2">{{ match.idJoueurDeux.nom ~ " " ~ match.idJoueurDeux.prenom }}
+                                                    ({{ match.idJoueurDeux.nationalite }})
+                                                </td>
+                                                <td class="fpt fpt2">{{ score[1]|default('-') }}</td>
+                                                <td class="fpt fpt2">{{ set1[1]|default('-') }}</td>
+                                                <td class="fpt fpt2">{{ set2[1]|default('-') }}</td>
+                                                <td class="fpt fpt2">{{ set3[1]|default('-') }}</td>
+                                                <td class="fpt fpt2">{{ set4[1]|default('-') }}</td>
+                                                <td class="fpt2">{{ set5[1]|default('-') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="match-more" colspan="7">
+                                                    <a href="{{ path('single_match', {'id':match.id}) }}" class="ca-more"><i
+                                                                class="fa fa-angle-double-right"></i>more</a></td>
+                                            </tr>
+                                        </table>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--Close Top Match-->
+                <div class="col-md-3 right-column">
+                    <div class="top-score-title col-md-12 right-title">
+                        <h3>Latest News</h3>
+                        {% for actualite in actualites %}
+                            <div class="right-content">
+                                <p class="news-title-right">{{ actualite.titre }}</p>
+                                <p class="txt-right">{{ actualite.contenu[:100] }}...</p>
+                                <a href="{{ path('single_news', {'id':actualite.id}) }}" class="ca-more"><i
+                                            class="fa fa-angle-double-right"></i>more...</a>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="top-score-title col-md-12">
+                        <img src="{{ asset('images/banner2.jpg') }}" alt=""/>
+                    </div>
+                    <div class="top-score-title col-md-12 right-title">
+                        <h3>Photos</h3>
+                        <ul class="right-last-photo">
+                            {% for media in medias %}
+                                <li>
+                                    <div class="jm-item second">
+                                        <div class="jm-item-wrapper">
+                                            <div class="jm-item-image">
+                                                <img src="{{ media.source }}" alt="" style="height: 80px; width: 80px"/>
+                                                <div class="jm-item-description">
+                                                    <div class="jm-item-button">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <!--MENU-->
+    <script src="js/menu/modernizr.custom.js" type="text/javascript"></script>
+    <script src="js/menu/cbpHorizontalMenu.js" type="text/javascript"></script>
+    <!--END MENU-->
+
+    <!-- Button Anchor Top-->
+    <script src="js/jquery.ui.totop.js" type="text/javascript"></script>
+    <script src="js/custom.js" type="text/javascript"></script>
+{% endblock %}

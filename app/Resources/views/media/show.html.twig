@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Media</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Genre</th>
+                <td>{{ medium.genre }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ medium.titre }}</td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>{{ medium.source }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ medium.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('media_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('media_edit', { 'id': medium.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

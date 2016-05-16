@@ -1,0 +1,28 @@
+
+    <h1>Don</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Date</th>
+                <td>{{ don.dateDon }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ don.description }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ don.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('don_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('don_edit', { 'id': don.id }) }}">Edit</a>
+        </li>
+    </ul>

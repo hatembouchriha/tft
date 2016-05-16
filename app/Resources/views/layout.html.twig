@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script><!--foscommentaireee-->
+    <link rel="stylesheet" type="text/css" href="css/jquery.jdigiclock.css" />
+    <script type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.jdigiclock.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#digiclock').jdigiclock({
+                // Configuration goes here
+            });
+        });
+    </script>
+
+
+
+    <title>WT TENNIS</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <meta name="author" content="Corsini Alessio"/>
+    <meta name="keywords"
+          content="Tennis, club, events, football, golf, non-profit, betting assistant, football,fitness, tennis, sport, soccer, goal, sports, volleyball, basketball,	charity, club, cricket, football, hockey, magazine, non profit, rugby, soccer, sport, sports, tennis"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    {% block stylesheets %}
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>
+        <!--<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300'
+              rel='stylesheet' type='text/css'/>
+        <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'/>-->
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,300,200,500,600,700,800,900' rel='stylesheet'
+              type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+
+        <link href="{{ asset('css/fonts/font-awesome-4.1.0/css/font-awesome.min.css') }}" rel="stylesheet"
+              type="text/css"/>
+        <!--Clients-->
+        <link href="{{ asset('css/own/owl.carousel.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('css/own/owl.theme.css') }}" rel="stylesheet" type="text/css"/>
+
+
+        <link href="{{ asset('css/jquery.bxslider.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('css/jquery.jscrollpane.css') }}" rel="stylesheet" type="text/css"/>
+
+        <link href="{{ asset('css/minislide/flexslider.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('css/component.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('css/style_dir.css') }}" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.ico') }}"/>
+        <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css"/>
+    {% endblock %}
+
+</head>
+<body>
+{% block header %}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6&appId=958599624258607";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+
+    <!--SECTION TOP LOGIN-->
+    <section class="content-top-login">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="box-support">
+                    <p class="support-info"><i class="fa fa-envelope-o"></i> info@teamrise.com</p>
+                </div>
+                <div class="box-login">
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <a href='{{ path('actualite_index') }}'>Espace admin</a>
+                        <a href='{{ path('fos_user_security_logout') }}'>Logout</a>
+                    {% elseif is_granted("ROLE_ARBITRE") %}
+                        <a href='{{ path('compterendumatch_index') }}'>Espace arbitre</a>
+                        <a href='{{ path('fos_user_security_logout') }}'>Logout</a>
+                    {% elseif is_granted("ROLE_FAN") %}
+                        <a href='{{ path('fos_user_security_login') }}'>Espace fan</a>
+                        <a href='{{ path('fos_user_security_logout') }}'>Logout</a>
+                    {% elseif is_granted("ROLE_JOUEUR") %}
+                        <a href='{{ path('fos_user_security_login') }}'>Espace Joueur</a>
+                        <a href='{{ path('fos_user_security_logout') }}'>Logout</a>
+                    {% elseif is_granted("ROLE_MEDECIN") %}
+                        <a href='{{ path('compterendutest_index') }}'>Espace médecin</a>
+                        <a href='{{ path('fos_user_security_logout') }}'>Logout</a>
+                    {% elseif is_granted("ROLE_RESPONSABLE") %}
+                        <a href='{{ path('compterendutest_indexresponsable') }}'>Espace responsable</a>
+                        <a href='{{ path('fos_user_security_logout') }}'>Logout</a>
+                    {% else %}
+                        <a href='{{ path('fos_user_security_login') }}'>Login</a>
+
+                        <a href="#sin">Sign Up</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--SECTION MENU -->
+    <section class="container box-logo">
+        <header>
+            <div class="content-logo col-md-12">
+                <div class="logo">
+                    <img src="{{ asset('images/FTT.jpg') }}" alt="" style="width: 100px; height: 80px"/>
+                </div>
+
+                <div class="bt-menu"><a href="#" class="menu"><span>&equiv;</span> Menu</a></div>
+
+                <div class="box-menu">
+
+                    <nav id="cbp-hrmenu" class="cbp-hrmenu">
+                        <ul id="menu">
+                            <li><a class="lnk-menu {% if app.request.get('_route') == 'site_home' %}active{% endif %}"
+                                   href="{{ path('site_home') }}">Home</a></li>
+                            <li><a class="lnk-menu {% if app.request.get('_route') == 'site_matchs' %}active{% endif %}"
+                                   href="{{ path('site_matchs') }}">Matches</a></li>
+                            <li>
+                                <a class="lnk-menu {% if app.request.get('_route') == 'site_players' %}active{% endif %}"
+                                   href="{{ path('site_players') }}">Players</a></li>
+                            <li>
+                                <a class="lnk-menu {% if app.request.get('_route') == 'site_ranking' %}active{% endif %}"
+                                   href="{{ path('site_ranking') }}">Ranking</a></li>
+                            <li><a class="lnk-menu {% if app.request.get('_route') == 'site_news' %}active{% endif %}"
+                                   href="{{ path('site_news') }}">News</a></li>
+                            <li>
+                                <a class="lnk-menu {% if app.request.get('_route') == 'site_tournaments' %}active{% endif %}"
+                                   href="{{ path('site_tournaments') }}">Tournaments</a></li>
+                            <li>
+                                <a class="lnk-menu {% if app.request.get('_route') == 'site_contact' %}active{% endif %}"
+                                   href="{{ path('site_contact') }}">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </section>
+{% endblock %}
+
+{% block body %}
+    {% endblock %}
+
+{% block footer %}
+    <section id="sponsor" class="container">
+        <!--SECTION SPONSOR-->
+        <div class="client-sport client-sport-nomargin">
+            <div class="content-banner">
+                <ul class="sponsor second">
+                    <li><img src="{{ asset('images/1.jpg') }}" alt=""/></li>
+                    <li><img src="{{ asset('images/2.jpg') }}" alt=""/></li>
+                    <li><img src="{{ asset('images/3.jpg') }}" alt=""/></li>
+                    <li><img src="{{ asset('images/4.jpg') }}" alt=""/></li>
+                    <li><img src="{{ asset('images/5.jpg') }}" alt=""/></li>
+                    <li><img src="{{ asset('images/6.jpg') }}" alt=""/></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="footer-tag">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h3>About Us</h3>
+                    <p>Thank you for visiting tennisclub.com. Our mission is to
+                        provide unrivalled and unbiased informative and resources to help any sports fan who enjoys a
+                        flutter make informed and value led decisions.</p>
+                    <p>Our mission is to
+                        provide unrivalled and unbiased informative, resources to help any sports fan who enjoys a
+                        flutter make.</p>
+                </div>
+                <div class="col-md-3 cat-footer">
+                    <div class="footer-map"></div>
+                    <h3 class='last-cat'>Categories</h3>
+                    <ul class="last-tips">
+                        <li><a href="{{ path('site_tournaments') }}">Tournaments</a></li>
+                        <li><a href="{{ path('site_ranking') }}">All Results</a></li>
+                        <li><a href="{{ path('site_matchs') }}">Matches</a></li>
+                        <li><a href="{{ path('site_news') }}">News</a></li>
+                        <li><a href="{{ path('site_contact') }}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>Last News</h3>
+                    <ul class="footer-last-news">
+                        {% for actualite in actualites %}
+                        <li><img src="/../../resources/images/actualites/{{ actualite.image }}"
+                        style="height: 50px; width: 76px"
+                        onerror="this.src='{{ asset("images/unknown-logo.jpg") }}'"/>
+                        <p>{{ actualite.contenu[:60] }}...</p></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-newsletters">
+                    <h3>Newsletters</h3>
+                    <form method="post">
+                        <div class="name">
+                            <label for="name">* Name:</label>
+                            <div class="clear"></div>
+                            <input id="name" name="name" type="text" placeholder="e.g. Mr. John Doe" required=""/>
+                        </div>
+                        <div class="email">
+                            <label for="email">* Email:</label>
+                            <div class="clear"></div>
+                            <input id="email" name="email" type="text" placeholder="example@domain.com" required=""/>
+                        </div>
+                        <div id="loader">
+                            <input type="submit" value="Submit"/>
+                        </div>
+                    </form>
+                </div>
+                    <ul class="social">
+
+                        <div class="col-md-12 col-sm-12">
+                                "{{ socialButtons() }}"
+                            </div>
+                    </ul>
+                </div>
+
+        </div>
+    </section>
+    <footer>
+        <div class="col-md-12 content-footer">
+            <p>© 2016 teamRise. All rights reserved. </p>
+        </div>
+    </footer>
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ asset('js/jquery-1.10.2.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        function updateClock ( )
+        {
+            var currentTime = new Date ( );
+            var currentHours = currentTime.getHours ( );
+            var currentMinutes = currentTime.getMinutes ( );
+            var currentSeconds = currentTime.getSeconds ( );
+
+            // Pad the minutes and seconds with leading zeros, if required
+            currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+            currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+
+            // Choose either "AM" or "PM" as appropriate
+            var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+
+            // Convert the hours component to 12-hour format if needed
+            currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+
+            // Convert an hours component of "0" to "12"
+            currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+
+            // Compose the string for display
+            var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+
+
+            $("#clock").html(currentTimeString);
+
+        }
+
+        $(document).ready(function()
+        {
+            setInterval('updateClock()', 1000);
+        });
+
+    </script>
+    <script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery.transit.min.js') }}" type="text/javascript"></script>
+
+    <!--MENU-->
+    <script src="{{ asset('js/menu/modernizr.custom.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/menu/cbpHorizontalMenu.js') }}" type="text/javascript"></script>
+    <!--END MENU-->
+
+    <!--Mini Flexslide-->
+    <script src="{{ asset('js/minislide/jquery.flexslider.js') }}" type="text/javascript"></script>
+
+    <!-- Percentace circolar -->
+    <script src="{{ asset('js/circle/jquery-asPieProgress.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/circle/rainbow.min.js') }}" type="text/javascript"></script>
+
+    <!--Gallery-->
+    <script src="{{ asset('js/gallery/jquery.prettyPhoto.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/gallery/isotope.js') }}" type="text/javascript"></script>
+
+    <!-- Button Anchor Top-->
+    <script src="{{ asset('js/jquery.ui.totop.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery.bxslider.js') }}" type="text/javascript"></script>
+
+    <!--Carousel News-->
+    <script src="{{ asset('js/jquery.easing.1.3.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery.mousewheel.js') }}" type="text/javascript"></script>
+
+    <!--Carousel Clients-->
+    <script src="{{ asset('js/own/owl.carousel.js') }}" type="text/javascript"></script>
+
+    <!--Count down-->
+    <script src="{{ asset('js/jquery.countdown.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('js/custom_ini.js') }}" type="text/javascript"></script>
+
+{% endblock %}
+
+
+</body>
+</html>

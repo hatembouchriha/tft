@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Medecin</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ medecin.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ medecin.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ medecin.login }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ medecin.password }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ medecin.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('medecin_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('medecin_edit', { 'id': medecin.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

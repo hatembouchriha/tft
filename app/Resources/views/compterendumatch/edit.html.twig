@@ -1,0 +1,48 @@
+<form action="{{ path('compterendumatch_edit', {'id':compteRenduMatch.id}) }}" method="post" {{ form_enctype(form) }}
+      class="form-horizontal"
+      role="form">
+    {{ form_errors(form) }}
+    <div class="form-group">
+        <label for="description" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.description ,"Description") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.description) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.description) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="match" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.idMatch ,"Match") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.idMatch) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.idMatch) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="arbitre" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.idArbitre ,"Arbitre") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.idArbitre) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.idArbitre) }}
+        </div>
+    </div>
+
+    <input type="submit" value="Modifier" class="btn btn-primary"/>
+    {{ form_rest(form) }}
+
+
+</form>

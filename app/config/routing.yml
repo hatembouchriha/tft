@@ -1,0 +1,27 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+facebook_login:
+    path: /login/check-facebook
+
+
+KunstmaanVotingBundle:
+    resource: "@KunstmaanVotingBundle/Resources/config/routing.yml"
+    prefix:   /
+
+awesome_voting:
+    resource: "@BKVotingBundle/Resources/config/routing.yml"
+
+

@@ -1,0 +1,99 @@
+<form action="{{ path('evenement_edit' , { 'id': evenement.id }) }}" method="post" {{ form_enctype(form) }}
+      class="form-horizontal" role="form" enctype="multipart/form-data">
+    {{ form_errors(form) }}
+    <div class="form-group">
+        <label for="nom" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.nom ,"Nom") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control' }}) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.nom) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="description" class="control-label col-sm-3 " style="text-align: left;">
+            {{ form_label(form.description ,"Description") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.description, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.description) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="dateDebut" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.dateDebut ,"Date de début") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.dateDebut) }}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="dateFin" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.dateFin ,"Date de fin") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.dateFin, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.dateFin) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="prix" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.prix ,"Prix") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.prix, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.prix) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="gagnant" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.gagnant ,"Gagnant") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.gagnant, {'attr': {'class': 'form-control' }}) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.gagnant) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="image" class="control-label col-sm-3" style="text-align: left;">
+            {{ form_label(form.image ,"Image") }}
+        </label>
+        <div class="col-sm-9">
+            {{ form_widget(form.image) }}
+
+        </div>
+        <div class="col-sm-12">
+            {{ form_errors(form.image) }}
+        </div>
+    </div>
+    {#<img src="/../../resources/images/evenements/{{ evenement.image }}" alt="{{ evenement.image }}"#}
+         {#style="width: 50px">#}
+    <input type="submit" value="Modifier" class="btn btn-primary"/>
+    {{ form_rest(form) }}
+
+
+</form>
+

@@ -1,0 +1,92 @@
+{% extends '::adminlayout.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables/jquery.dataTables.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% set IDs = {} %}
+    <section class="content-header">
+        <h1>Fans</h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box">
+                    <div class="box-header">
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="tableFan" datatable="" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Email</th>
+                                <th>Id</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for fan in fans %}
+                                <tr>
+                                    <td><a href="{{ path('fan_show', { 'id': fan.id }) }}">{{ fan.nom }}</a></td>
+                                    <td>{{ fan.prenom }}</td>
+                                    <td>{{ fan.email }}</td>
+                                    <td>{{ fan.id }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <!-- jQuery 2.1.4 -->
+    <script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- DataTables -->
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <!-- SlimScroll -->
+    <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+    <!-- FastClick -->
+    <script src="{{ asset('plugins/fastclick/fastclick.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('dist/js/app.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('dist/js/demo.js') }}"></script>
+    <!-- page script -->
+    <script>
+        $(document).ready(function () {
+            var table = $('#tableFan').DataTable();
+
+            $('#tableFan tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+        });
+    </script>
+{% endblock %}

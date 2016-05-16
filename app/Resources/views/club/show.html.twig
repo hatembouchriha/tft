@@ -1,0 +1,41 @@
+{% extends '::adminlayout.html.twig' %}
+
+{% block body %}
+    <div class="container" style="padding: 20px;" xmlns="http://www.w3.org/1999/html">
+        <div class="row">
+            <div class="col-sm-5">
+
+                <div class="panel panel-primary" >
+                    <div class="panel-heading">
+                        <h1 class="panel-title" style="text-align: center;">Club</h1>
+                    </div>
+                    <div class="panel-body" style="padding: 20px 10px 20px 10px ;">
+                        <div class="dl-horizontal">
+                            <dt>ID</dt>
+                            <dd>{{ club.id }}</dd>
+                            <dt>Nom</dt>
+                            <dd>{{ club.nom}}</dd>
+                            <dt>Logo</dt>
+                            <dd>{{ club.logo}}</dd>
+                            <dt>Date fondation</dt>
+                            <dd>{{club.dateFondation| date('d/m/Y') }}</dd>
+                            <dt>Adresse</dt>
+                            <dd>{{club.adresse }}</dd>
+
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+
+                        {{ form_start(delete_form) }}
+
+                        <button type="submit"  class="btn btn-danger">Supprimer </button>
+                        <a href="{{ path('club_edit', { 'id': club.id }) }}" class="btn btn-warning" style="display: inline;">Modifier</a>
+                        {{ form_end(delete_form) }}
+
+                    </div>
+                </div>
+                <a href="{{ path('club_index') }}" class="btn btn-link">Retourner</a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,459 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6&appId=958599624258607";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6&appId=958599624258607";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <section id="summary-slider">
+        <div class="general">
+            <div class="content-result content-result-news col-md-12"
+                 style="background: url('{{ asset("images/tennis-court-in-the-water.jpg") }}') no-repeat 100% 100%">
+                <div id="textslide" class="effect-backcolor">
+                    <div class="container">
+                        <div class="col-md-12 slide-txt">
+                            <p class='sub-result aft-little welcome linetheme-left'>Creative</p>
+                            <p class='sub-result aft-little linetheme-right'>Web Design<span class="point-big">.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="slidematch" class="col-xs-12 col-md-12">
+                <div class="content-match-team-wrapper">
+                    <span class="gdlr-left">Real Tennis</span>
+                    <span class="gdlr-upcoming-match-versus">VS</span>
+                    <span class="gdlr-right">Wednesday Club</span>
+                </div>
+                <div class="content-match-team-time">
+                    <span class="gdlr-left">23 Sep 2016 - 14:00</span>
+                    <span class="gdlr-right">Real Stadium</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SECTION NEWS SLIDER -->
+    <section class="news_slide-over-color">
+        <div class="news_slide-over"></div>
+        <div class="container">
+            <div class="col-xs-12 col-md-12 top-first-info">
+                <div class="col-md-4">
+                    <section class="slider">
+                        <div id="slider" class="flexslider flexslider-attachments">
+                            <ul class="slides">
+                                {% for actualite in allActualites %}
+                                    <li data-thumb="images/slider/mini-slider/thumb1.jpg">
+                                        <img src="/../../resources/images/actualites/{{ actualite.image }}"
+                                             onerror="this.src='{{ asset("images/unknown-logo.jpg") }}'"
+                                             style="height: 240px; width: 380px"/></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="slide-news-bottom"><a href="{{ path('site_news') }}">
+                                Slide News</a>
+                            <a class="i-ico" href="{{ path('site_news') }}">
+                                <i class="fa fa-angle-double-right"></i></a></div>
+                    </section>
+                </div>
+    {% if actualites != null %}
+                <div class="col-md-4">
+                    <img src="/../../resources/images/actualites/{{ actualites[0].image }}"
+                         onerror="this.src='{{ asset("images/unknown-logo.jpg") }}'"
+                         style="height: 240px; width: 380px"/>
+                    <div class="slide-news-bottom"><a href="{{ path('single_news', {'id':actualites[0].id}) }}">
+                            {{ actualites[0].titre }}</a><a class="i-ico"
+                                                            href="{{ path('single_news', {'id':actualites[0].id}) }}">
+                            <i class="fa fa-angle-double-right"></i></a></div>
+                </div>
+                <div class="col-md-4">
+                    <img src="/../../resources/images/actualites/{{ actualites[1].image }}"
+                         onerror="this.src='{{ asset("images/unknown-logo.jpg") }}'"
+                         style="height: 240px; width: 380px"/>
+                    <div class="slide-news-bottom"><a href="{{ path('single_news', {'id':actualites[1].id}) }}">
+                            {{ actualites[1].titre }}</a><a class="i-ico"
+                                                            href="{{ path('single_news', {'id':actualites[1].id}) }}">
+                            <i class="fa fa-angle-double-right"></i></a></div>
+                </div>
+        {% endif %}
+            </div>
+            <div class="col-xs-12 col-md-12 top-slide-info">
+                {% for actualite in forActualites %}
+                    <div class="col-xs-6 col-md-6 box-top-txt">
+                        <div class="col-md-4 slide-cont-img"><a href="{{ path('single_news', {'id':actualite.id}) }}">
+                                <img class="scale_image"
+                                     src="/../../resources/images/actualites/{{ actualite.image }}"
+                                     onerror="this.src='{{ asset("images/unknown-logo.jpg") }}'"
+                                     style="height: 120px; width: 190px"/>
+                                <i class="fa fa-picture-o"></i></a></div>
+                        <div class="event_date dd-date">{{ actualite.datePublication|localizeddate('long') }}
+                            <div class="post_theme">Exlusive</div>
+                        </div>
+                        <h4> {{ actualite.titre }}</h4>
+                        <p>{{ actualite.contenu[:150] }}...</p>
+                    </div>
+                {% endfor %}
+                {##}
+                {#<div class="col-xs-6 col-md-6 box-top-txt">#}
+                {#<div class="col-md-4 slide-cont-img"><a href="single_news.html"><img class="scale_image"#}
+                {#src="http://placehold.it/614x428"#}
+                {#alt=""/><i#}
+                {#class="fa fa-video-camera"></i></a></div>#}
+                {#<div class="event_date dd-date">May 01, 2014 5:50 am</div>#}
+                {#<h4> Stay Ahead of the curve</h4>#}
+                {#<p>Quisque gravida libero sodales augue luctus elementum. In tristique faucibus diam, sit amet#}
+                {#ultrices erat porttitor ut. Phasellus sit amet lorem sit amet orci lobortis mattis. Nulla#}
+                {#venenatis, quam vitae pellentesque sollicitudin.</p>#}
+
+                {#</div>#}
+            </div>
+        </div>
+    </section>
+
+    <section id="parallaxTraining">
+
+    </section>
+    <!--SECTION Match TOP SCORE-->
+    <section id="atp-match">
+        <div class="container">
+            <div id="people-top" class="top-match col-xs-12 col-md-12">
+                <h3 class="news-title n-match">Last <span>Match</span><span class="point-little">.</span></h3>
+                <p class="subtitle">A small creative team, trying to enrich the lives of others and build brands
+                    that a normal humans can understand.</p>
+                <!--SECTION ATP MATCH-->
+                <div class="next-match-co col-xs-8 col-md-8">
+                    <div id="nextmatch-content" class="experience">
+                        <div class="col-xs-12 atphead">
+                            <div class="match-sing-title">
+                                <img src="{{ asset('images/sub-ball.png') }}"
+                                     alt=""/>ATP.HEAD2
+                            </div>
+                        </div>
+                        {% if match != null %}
+                        <div class="col-xs-4 pht-1 pht-left">
+                            <div class="img-face-home">
+                                <img src="/../../resources/images/joueurs/{{ match[0].idJoueurUn.image }}"
+                                     onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                     style="height: 200px; width: 140px"/>
+                                <p class="name-mc">{{ match[0].idJoueurUn.nom ~ " " ~ match[0].idJoueurUn.prenom }}</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 pl-point ">
+                            <p class="col-xs-12 name-mc-title">{{ match[0].idEvenement.nom }}
+                                - {{ match[0].description }} Final</p>
+                            <div class="col-xs-4 nm-result">
+                                <p class="nr1 ris1"> {{ match[0].score|slice(0,1) }} </p>
+                            </div>
+                            <div class="col-xs-4 nm-result-vs">
+                                <p class="nrvs"> - VS - </p>
+                            </div>
+                            <div class="col-xs-4 nm-result">
+                                <p class="nr1 ris2"> {{ match[0].score|slice(2,1) }} </p>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-4 pht-1 pht-right">
+                            <div class="img-face-home">
+                                <img src="/../../resources/images/joueurs/{{ match[0].idJoueurDeux.image }}"
+                                     onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                     style="height: 200px; width: 140px"/>
+                                <p class="name-mc">{{ match[0].idJoueurDeux.nom ~ " " ~ match[0].idJoueurDeux.prenom }}</p>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 atphead">
+                            <div class="match-sing-title inf-bottom">
+                                <p><i class="fa fa-calendar-o"></i>{{ match[0].dateMatch|localizeddate('long') }}
+                                    <i class="fa fa-map-marker"></i> {{ match[0].idStade.nom }}</p>
+                            </div>
+                        </div>
+                            {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4 home-page">
+                    <div class="main">
+                        <div class="tabs animated-slide-2">
+                            <div class="result-filter">
+                                <ul class="tab-links">
+                                    <li class="active"><a href="#tab1111">Tunisia</a></li>
+                                    <li><a href="#tab2222">All</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content-point">
+                                <div id="tab1111" class="tab active">
+                                    <table class="tab-score">
+                                        <tr class="top-scrore-table">
+                                            <td class="score-position">POS.</td>
+                                            <td>PLAYER</td>
+                                            <td>NAT.</td>
+                                            <td>POINTS</td>
+                                        </tr>
+                                        {% for joueur in joueursTun %}
+                                            <tr>
+                                                <td class="score-position">{{ loop.index }}.</td>
+                                                <td><a href="{{ path('single_player', {'id':joueur.id}) }}">
+                                                        {{ joueur.nom ~ " " ~ joueur.prenom }}
+                                                    </a></td>
+                                                <td>
+                                                    <img src="/../../resources/images/joueurs/{{ joueur.image }}"
+                                                         onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                                         style="height: 40px; width: 40px"/></td>
+                                                <td>{{ joueur.score }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                                <div id="tab2222" class="tab">
+                                    <table class="tab-score">
+                                        <tr class="top-scrore-table">
+                                            <td class="score-position">POS.</td>
+                                            <td>PLAYER</td>
+                                            <td>NAT.</td>
+                                            <td>POINTS</td>
+                                        </tr>
+                                        {% for joueur in joueurs %}
+                                            <tr>
+                                                <td class="score-position">{{ loop.index }}.</td>
+                                                <td><a href="{{ path('single_player', {'id':joueur.id}) }}">
+                                                        {{ joueur.nom ~ " " ~ joueur.prenom }}
+                                                    </a></td>
+                                                <td>
+                                                    <img src="/../../resources/images/joueurs/{{ joueur.image }}"
+                                                         onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                                         style="height: 40px; width: 40px"/></td>
+                                                <td>{{ joueur.score }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="score-view-all"><a class="pl-point-button" href="{{ path('site_ranking') }}">View
+                                    All</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--Close Top Match-->
+        </div>
+    </section>
+    <!--SECTION NEXT MATCH-->
+    <section id="next-match">
+        <div class="container">
+            <div class="next-match-news top-match col-xs-12 col-md-12">
+                <h3 class="news-title n-match">Next <span>Match</span><span class="point-little">.</span></h3>
+                <p class="subtitle">A small creative team, trying to enrich the lives of others and build brands
+                    that a normal humans can understand.</p>
+    {% if matchs != null %}
+                <div class="other-match col-md-4">
+                    <div class="score-next-time">
+                        <div class="circle-ico"><p>ATP</p></div>
+                    </div>
+                    <div id="getting-started"></div>
+                    <div class="col-xs-5 col-md-5 match-team">
+                        <img class="" src="{{ asset('/../../resources/images/joueurs/') }}{{ matchs[0].idJoueurUn }}"
+                             onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                             style="height: 86px; width: 80px"/>
+                        <p>{{ matchs[0].idJoueurUn.nom }}</p>
+                    </div>
+                    <div class="col-xs-2 col-md-2 match-team-vs">
+                        <span class="txt-vs"> - vs - </span>
+                    </div>
+                    <div class="col-xs-5 col-md-5 match-team">
+                        <img class="" src="{{ asset('/../../resources/images/joueurs/') }}{{ matchs[0].idJoueurDeux }}"
+                             onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                             style="height: 86px; width: 80px"/>
+                        <p>{{ matchs[0].idJoueurDeux.nom }}</p>
+                    </div>
+                    <div class="next-match-place">
+                        <p class='sub-result'>{{ matchs[0].idEvenement.nom }}</p>
+                        <p class="dd-news-date">{{ matchs[0].dateMatch|localizeddate('long') }} {{ matchs[0].idStade.nom }}</p>
+                    </div>
+
+                </div>
+                <div class="other-match col-md-4">
+                    {% for m in matchs[1:] %}
+                        <div class="match-team-list">
+                            <img class="t-img1" src="{{ asset('/../../resources/images/joueurs/') }}{{ m.idJoueurUn }}"
+                                 onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                 style="height: 52px; width: 50px"/>
+                            <span>{{ m.idJoueurUn.nom }}</span>
+                            <span class="txt-vs"> - vs - </span>
+                            <span>{{ m.idJoueurDeux.nom }}</span>
+                            <img class="t-img2"
+                                 src="{{ asset('/../../resources/images/joueurs/') }}{{ m.idJoueurDeux }}"
+                                 onerror="this.src='{{ asset("images/player/face.jpg") }}'"
+                                 style="height: 52px; width: 50px"/>
+                            <p>{{ m.dateMatch|localizeddate('long') }}</p>
+                        </div>
+                    {% endfor %}
+                    <div class="team-view-all">
+                        <p>View all</p>
+
+                    </div>
+                    <div class="team-view-all">
+                        <div id="clock" class="btn btn-info btn-lg"></div>
+                    </div>
+                </div>
+        {% endif %}
+                <div class="other-match col-md-4 other-last">
+                    <img src="{{ asset('images/adwertise.jpg') }}"/>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PARALLAX BLACK TENNIS-->
+    <section class="bbtxt-content"
+             style="background: transparent url({{ asset('images/Tennis-Court-Dubai.jpg') }}) no-repeat center center fixed;">
+
+        <div class="container">
+            <div class="col-xs-12 bbtxt-box">
+                <h4><i class="fa fa-quote-left"></i>Tennis<span class="point-big">.</span> <span class="middle-txt">is the new black<span
+                                class="point-little">.</span></span><i class="fa fa-quote-right"></i></h4>
+                <p class="subin">The best tennis tour around the europe step by step.</p>
+                <div class="col-md-6 homevideo-top">
+                    <h3 class="home-video-title">Amazing Video</h3>
+                    {% for video in videos[:3] %}
+                        <div class="col-md-12 homevideo">
+                            <div class="col-md-5 it-video">
+                                <a href="{{ path('single_video', {'id': video.id}) }}">
+                                    <iframe width="250"
+                                            height="160" src="https://www.youtube.com/embed/{{ video.source[32:] }}"
+                                            frameborder="0" allowfullscreen></iframe>
+                                    <i class="fa fa-video-camera"></i></a>
+                            </div>
+                            <div class="video-txt">
+                                <h3>{{ video.titre }}</h3>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-6 homevideo-top">
+                    <h3 class="home-video-title">Amazing Video</h3>
+                    {% for video in videos[3:] %}
+                        <div class="col-md-12 homevideo">
+                            <div class="col-md-5 it-video">
+                                <a href="{{ path('single_video', {'id': video.id}) }}">
+                                    <iframe width="250"
+                                            height="160" src="https://www.youtube.com/embed/{{ video.source[32:] }}"
+                                            frameborder="0" allowfullscreen></iframe>
+                                    <i class="fa fa-video-camera"></i></a>
+                            </div>
+                            <div class="video-txt">
+                                <h3>{{ video.titre }}</h3>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--SECTION LAST PHOTO-->
+    <section id="news-section">
+        <div class="container">
+            <div class="top-match col-xs-12 col-md-12">
+                <div class="news-content">
+                    <h3 class="news-title">Latest <span>Photo</span><span class="point-little">.</span></h3>
+                    <p class="subtitle">A small creative team, trying to enrich the lives of others and build brands
+                        that a normal humans can understand.</p>
+                    <div id="container-vert-n">
+                        <dl class="group">
+                            <dt></dt>
+                        </dl>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="portfolio group albumContainer">
+            {% for image in images %}
+                <li class="item block cat2 col-xs-3">
+                    <a href="{{ image.source }}" data-gal="prettyPhoto[portfolio]"><img
+                                src="{{ image.source }}" style="width: 340px;height: 200px"/></a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <div
+            class="fb-like"
+            data-share="true"
+            data-width="450"
+            data-show-faces="true">
+    </div>
+    
+
+
+</div>
+
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '958928787559024',
+                xfbml      : true,
+                version    : 'v2.6'
+            });
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function fb_login() {
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    // connected
+                    alert('Already connected, redirect to login page to create token.');
+                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "my.custom.user_provider"}) }}";
+                } else {
+                    // not_authorized
+                    FB.login(function(response) {
+                        if (response.authResponse) {
+                            document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                        } else {
+                            alert('Cancelled.');
+                        }
+                    }, {scope: 'email'});
+                }
+            });
+        }
+    </script>
+
+
+
+
+    <p>
+        <a href="{{ path('hwi_oauth_connect') }}" onclick="fb_login();">Facebook Connect Button (Dialog)</a>
+    </p>
+
+    {# Bonus: Show all available login link in HWIOAuthBundle #}
+    {% render(controller('HWIOAuthBundle:Connect:connect')) %}
+
+    <div class="fb-page"
+         data-tabs="timeline,events,messages"
+         data-href="https://www.facebook.com/Federation.Tunisienne.Tennis/?fref=ts"
+         data-width="380"
+         data-hide-cover="true"></div>
+{% endblock %}

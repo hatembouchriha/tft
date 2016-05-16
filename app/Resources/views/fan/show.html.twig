@@ -1,0 +1,33 @@
+
+    <h1>Fan</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ fan.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ fan.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ fan.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ fan.password }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ fan.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fan_index') }}">Back to the list</a>
+        </li>
+    </ul>
